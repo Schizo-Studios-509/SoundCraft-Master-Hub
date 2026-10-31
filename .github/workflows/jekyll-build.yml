@@ -1,0 +1,38 @@
+name: Validate Jekyll site
+
+on:
+  push:
+    branches: [publish]
+  pull_request:
+    branches: [publish]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  jekyll-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out website branch
+        uses: actions/checkout@v4
+      - name: Set up Ruby and install Jekyll dependencies
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --trace
+      - name: Assert generated pages exist
+        run: |
+          test -f _site/index.html
+          test -f _site/docs/index.html
+          test -f _site/docs/frequencies/index.html
+          test -f _site/docs/protocols/index.html
+          test -f _site/docs/technical/index.html
+      - name: Upload generated website for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: soundcraft-jekyll-site
+          path: _site/
+          if-no-files-found: error
