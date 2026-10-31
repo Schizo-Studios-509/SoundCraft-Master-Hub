@@ -1,0 +1,27 @@
+title: SoundCraft Master Hub
+description: Official SoundCraft documentation, frequency references, protocols, and composition frameworks.
+url: "https://schizo-studios-509.github.io"
+baseurl: "/SoundCraft-Master-Hub"
+theme: minima
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
+header_pages:
+  - index.md
+  - docs/index.md
+exclude:
+  - "SoundCraft AI/"
+  - "Smith Equivalence App/"
+  - "Outputs/"
+  - "SoundCraft Audio Stamp.m4a"
+  - "README"
+  - "README.md"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "vendor/"
+  - "node_modules/"
+  - ".github/"
+  - "Protocols/"
+  - "Frequency Library/"
+  - "Reference/"
+  - "*.py"
