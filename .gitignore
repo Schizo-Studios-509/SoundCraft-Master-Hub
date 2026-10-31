@@ -1,0 +1,22 @@
+# Jekyll generated output
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+Gemfile.lock
+
+# Python-generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+.env
+
+# Editor and OS artifacts
+.DS_Store
+Thumbs.db
+*.swp
