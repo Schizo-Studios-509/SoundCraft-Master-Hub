@@ -1,0 +1,18 @@
+# Python packages and generated artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+site-packages/
+*.egg-info/
+build/
+dist/
+# Local system and editor files
+.DS_Store
+Thumbs.db
+*.swp
+.env
