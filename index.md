@@ -3,8 +3,6 @@ layout: home
 title: SoundCraft Master Hub
 ---
 
-# SoundCraft Master Hub
-
 The official reference hub for SoundCraft, a framework for intentional sound composition combining music theory, acoustic mathematics, and symbolic traditions.
 
 Created under **Schizo Studios 509**, with repository stewardship by **Dictation2897**.

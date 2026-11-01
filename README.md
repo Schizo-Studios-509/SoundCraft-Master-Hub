@@ -23,10 +23,10 @@ The output is placed in `_site/`, which should never be committed.
 
 ## Hosting
 
-The Jekyll configuration assumes the GitHub Pages project URL:
+GitHub Pages is enabled and builds from the root of the `publish` branch. The published site is:
 
 `https://schizo-studios-509.github.io/SoundCraft-Master-Hub/`
 
-If using a custom domain, update `url` and `baseurl` first. **Publishing is not enabled by this branch**; review public visibility before configuring GitHub Pages deployment.
+If using a custom domain, update `url` and `baseurl` first.
 
-The repository is currently private and uses an All Rights Reserved license.
+The repository is public and uses an All Rights Reserved license. Source files on `main` and earlier versions in Git history are publicly accessible through GitHub; excluding files from the website does not make them private.

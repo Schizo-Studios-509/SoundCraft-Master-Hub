@@ -4,12 +4,10 @@ title: Documentation
 permalink: /docs/
 ---
 
-# Documentation
-
-This website is a curated guide to the original repository. Source documents and production assets remain in their existing locations until a reviewed migration is approved.
+This website is a curated guide to the [authoritative SoundCraft source on `main`](https://github.com/Schizo-Studios-509/SoundCraft-Master-Hub/tree/main). Application code, protocols, frequency records, and production assets remain on `main`; the `publish` branch contains the website.
 
 - [Frequency library]({{ '/docs/frequencies/' | relative_url }})
 - [Protocol index]({{ '/docs/protocols/' | relative_url }})
 - [Technical references]({{ '/docs/technical/' | relative_url }})
 
-See the [repository](https://github.com/Schizo-Studios-509/SoundCraft-Master-Hub) if you have access.
+Browse the [public repository](https://github.com/Schizo-Studios-509/SoundCraft-Master-Hub) for the complete source material.
