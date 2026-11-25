@@ -1,5 +1,5 @@
 import pyto_ui as ui
-from ai_helper import chat
+from .ai_helper import chat
 
 class SoundCraftView(ui.View):
     def __init__(self):
