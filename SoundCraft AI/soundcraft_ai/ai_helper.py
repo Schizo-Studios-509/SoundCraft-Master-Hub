@@ -2,6 +2,7 @@ import os
 import platform
 import requests
 import json
+import re
 
 # ---------------------------------------------------------------
 # Ollama API endpoint
@@ -21,6 +22,21 @@ def describe_env():
         "python_version": platform.python_version(),
         "cwd": os.getcwd(),
     }
+
+# ---------------------------------------------------------------
+# Terminal output sanitisation
+# ---------------------------------------------------------------
+# Remove C0 control characters (including ESC, BEL and CR) except newline
+# and tab, as well as DEL and the C1 control range (0x80-0x9F), which
+# includes single-byte CSI/OSC introducers. Without ESC or C1 introducers,
+# injected ANSI/OSC sequences are rendered as inert text.
+_CONTROL_CHARS_RE = re.compile(r"[\x00-\x08\x0b-\x1f\x7f-\x9f]")
+
+
+def sanitize_terminal_text(value) -> str:
+    """Return ``value`` as text with terminal control characters removed."""
+    return _CONTROL_CHARS_RE.sub("", str(value))
+
 
 # ---------------------------------------------------------------
 # Talk to Ollama API
@@ -45,13 +61,13 @@ def chat(prompt: str):
         response.raise_for_status()
         data = response.json()
         if "message" in data:
-            return data["message"]["content"]
+            return sanitize_terminal_text(data["message"]["content"])
         elif "error" in data:
-            return f"⚠️ Ollama API error: {data['error']}"
+            return sanitize_terminal_text(f"⚠️ Ollama API error: {data['error']}")
         else:
-            return json.dumps(data, indent=2)
+            return sanitize_terminal_text(json.dumps(data, indent=2))
     except Exception as e:
-        return f"⚠️ Connection error: {e}"
+        return sanitize_terminal_text(f"⚠️ Connection error: {e}")
 
 # ---------------------------------------------------------------
 # Interactive CLI loop
@@ -68,12 +84,12 @@ def main():
                 print("Session ended.")
                 break
             result = chat(user_in)
-            print(result)
+            print(sanitize_terminal_text(result))
         except KeyboardInterrupt:
             print("\nSession interrupted.")
             break
         except Exception as e:
-            print(f"⚠️ Error: {e}")
+            print(sanitize_terminal_text(f"⚠️ Error: {e}"))
 
 if __name__ == "__main__":
     main()
